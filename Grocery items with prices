@@ -1,0 +1,49 @@
+# Grocery items with prices
+store = {
+    "rice": 150,
+    "sugar": 120,
+    "milk": 80,
+    "bread": 60,
+    "eggs": 200
+}
+
+# List to store purchased items
+cart = []
+
+print("===== Welcome to Grocery Store =====")
+
+while True:
+    print("\nAvailable Items:")
+    for item, price in store.items():
+        print(f"{item} - Rs {price}")
+
+    choice = input("\nEnter item name to buy (or 'exit' to finish): ").lower()
+
+    if choice == "exit":
+        break
+
+    if choice in store:
+        quantity = int(input("Enter quantity: "))
+        cost = store[choice] * quantity
+        cart.append({"item": choice, "quantity": quantity, "cost": cost})
+        print(f"Added to cart! {quantity} x {choice} = Rs {cost}")
+    else:
+        print("Item not available!")
+
+# Print final detailed bill
+print("\n===== Final Bill =====")
+print(f"{'Item':15} {'Quantity':10} {'Price':10} {'Total':10}")
+print("-"*50)
+
+grand_total = 0
+for product in cart:
+    item_name = product['item']
+    quantity = product['quantity']
+    price = store[item_name]
+    total = product['cost']
+    grand_total += total
+    print(f"{item_name:15} {quantity:<10} {price:<10} {total:<10}")
+
+print("-"*50)
+print(f"{'Grand Total':35} Rs {grand_total}")
+print("===== Thank you for shopping! =====")
