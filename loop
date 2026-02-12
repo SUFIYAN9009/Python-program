@@ -1,0 +1,3 @@
+ Name=["Sufiyan"]
+ for Name in range(5):
+     print("Sufiyan") 
